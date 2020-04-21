@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Command.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jmemcached-common</a> &gt; <a href="index.source.html" class="el_package">net.devstudy.jmemcashed.protocol.model</a> &gt; <span class="el_source">Command.java</span></div><h1>Command.java</h1><pre class="source lang-java linenums">package net.devstudy.jmemcashed.protocol.model;
+
+import net.devstudy.jmemcashed.exception.JMemcashedException;
+
+<span class="fc" id="L5">public enum Command {</span>
+<span class="fc" id="L6">    CLEAR(0),</span>
+<span class="fc" id="L7">    PUT(1),</span>
+<span class="fc" id="L8">    GET(2),</span>
+<span class="fc" id="L9">    REMOVE(3);</span>
+
+    private byte code;
+
+<span class="fc" id="L13">    Command(int code) {</span>
+<span class="fc" id="L14">        this.code = (byte) code;</span>
+<span class="fc" id="L15">    }</span>
+
+    public static Command valueOf(byte byteCode) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (Command command : Command.values()) {</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">            if (command.getByteCode() == byteCode) {</span>
+<span class="fc" id="L20">                return command;</span>
+            }
+        }
+
+<span class="fc" id="L24">        throw new JMemcashedException(&quot;Unsupported byteCode for Version: &quot; + byteCode);</span>
+    }
+
+    public byte getByteCode() {
+<span class="fc" id="L28">        return code;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

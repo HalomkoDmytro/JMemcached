@@ -1,0 +1,13 @@
+net\devstudy\jmemcashed\protocol\model\CommandTest.class
+net\devstudy\jmemcashed\protocol\model\RequestTest.class
+net\devstudy\jmemcashed\protocol\model\StatusTest.class
+net\devstudy\jmemcashed\protocol\model\VersionTest.class
+net\devstudy\jmemcashed\protocol\model\AbstractPackageTest$1.class
+test\SerializableFailedClass.class
+net\devstudy\jmemcashed\protocol\impl\AbstractPackageConverterTest.class
+net\devstudy\jmemcashed\protocol\impl\DefaultRequestConverterTest.class
+net\devstudy\jmemcashed\protocol\model\AbstractPackageTest.class
+net\devstudy\jmemcashed\protocol\impl\AbstractPackageConverterTest$1.class
+net\devstudy\jmemcashed\protocol\impl\DefaultResponseConverterTest.class
+net\devstudy\jmemcashed\protocol\impl\DefaultObjectSerializerTest.class
+net\devstudy\jmemcashed\protocol\model\ResponseTest.class

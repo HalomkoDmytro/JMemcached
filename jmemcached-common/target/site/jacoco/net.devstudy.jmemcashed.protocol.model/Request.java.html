@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Request.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jmemcached-common</a> &gt; <a href="index.source.html" class="el_package">net.devstudy.jmemcashed.protocol.model</a> &gt; <span class="el_source">Request.java</span></div><h1>Request.java</h1><pre class="source lang-java linenums">package net.devstudy.jmemcashed.protocol.model;
+
+import java.util.Date;
+
+public class Request extends AbstractPackage {
+
+    private final Command command;
+    private String key;
+    private Long ttl;
+
+<span class="fc" id="L11">    public Request(Command command) {</span>
+<span class="fc" id="L12">        this.command = command;</span>
+<span class="fc" id="L13">    }</span>
+
+    public Request(Command command, String key, Long ttl, byte[] data) {
+<span class="fc" id="L16">        super(data);</span>
+<span class="fc" id="L17">        this.command = command;</span>
+<span class="fc" id="L18">        this.key = key;</span>
+<span class="fc" id="L19">        this.ttl = ttl;</span>
+<span class="fc" id="L20">    }</span>
+
+<span class="fc" id="L22">    public Request(Command command, String key) {</span>
+<span class="fc" id="L23">        this.command = command;</span>
+<span class="fc" id="L24">        this.key = key;</span>
+<span class="fc" id="L25">    }</span>
+
+    public Command getCommand() {
+<span class="fc" id="L28">        return command;</span>
+    }
+
+    public String getKey() {
+<span class="fc" id="L32">        return key;</span>
+    }
+
+    public void setKey(String key) {
+<span class="fc" id="L36">        this.key = key;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Long getTtl() {
+<span class="fc" id="L40">        return ttl;</span>
+    }
+
+    public void setTtl(Long ttl) {
+<span class="fc" id="L44">        this.ttl = ttl;</span>
+<span class="fc" id="L45">    }</span>
+
+    public boolean hasKey() {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        return key != null;</span>
+    }
+
+    public boolean hasTtl() {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        return ttl != null;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L57">        final StringBuilder sb = new StringBuilder(getCommand().name());</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (hasKey()) {</span>
+<span class="fc" id="L59">            sb.append('[').append(getKey()).append(']');</span>
+        }
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (hasData()) {</span>
+<span class="fc" id="L62">            sb.append(&quot;=&quot;).append(getData().length).append(&quot;bytes&quot;);</span>
+        }
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (hasTtl()) {</span>
+<span class="fc" id="L65">            sb.append('(').append(new Date(getTtl())).append(')');</span>
+        }
+<span class="fc" id="L67">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Version.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jmemcached-common</a> &gt; <a href="index.source.html" class="el_package">net.devstudy.jmemcashed.protocol.model</a> &gt; <span class="el_source">Version.java</span></div><h1>Version.java</h1><pre class="source lang-java linenums">
+package net.devstudy.jmemcashed.protocol.model;
+
+import net.devstudy.jmemcashed.exception.JMemcashedException;
+
+<span class="fc" id="L6">public enum Version {</span>
+
+<span class="fc" id="L8">    VERSION_0_0(0, 0),</span>
+<span class="fc" id="L9">    VERSION_1_0(1, 0);</span>
+
+    private byte high; // contain 3 bit high
+
+    private byte low;
+
+<span class="fc" id="L15">    Version(int high, int lov) {</span>
+<span class="fc" id="L16">        this.high = (byte) (high &amp; 0x7); // remove all values higher 7</span>
+<span class="fc" id="L17">        this.low = (byte) (lov &amp; 0xF);</span>
+<span class="fc" id="L18">    }</span>
+
+    public static Version valueOf(byte byteCode) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for (Version version : Version.values()) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            if (version.getByteCode() == byteCode) {</span>
+<span class="fc" id="L23">                return version;</span>
+            }
+        }
+
+<span class="fc" id="L27">        throw new JMemcashedException(&quot;Unsupported byteCode for Version: &quot; + byteCode);</span>
+    }
+
+    public byte getByteCode() {
+<span class="fc" id="L31">        return (byte) (low + (high &lt;&lt; 4));</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L36">        return String.format(&quot;%s.%s&quot;, high, low);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
